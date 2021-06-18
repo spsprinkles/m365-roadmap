@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "m-365-roadmap-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/m365Roadmap/M365RoadmapWebPart.js",
+          "manifest": "./src/webparts/m365Roadmap/M365RoadmapWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "M365RoadmapWebPartStrings": "lib/webparts/m365Roadmap/loc/{locale}.js"
+  }
+}

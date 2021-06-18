@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "M365 Roadmap",
+    "id": "9fefe12b-8269-4395-b10c-3691e0c04acb",
+    "version": "0.1.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Gunjan Datta",
+      "websiteUrl": "https://dev.azure.com/gudatta/Datta%20Framework/_git/m365-roadmap",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": ""
+    }
+  },
+  "paths": {
+    "zippedPackage": "../../dist/m365-roadmap.sppkg"
+  }
+}
