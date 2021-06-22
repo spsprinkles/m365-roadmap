@@ -33,6 +33,9 @@ export class FilterSlideout {
         DataSource.waitUntilLoaded().then(() => {
             // Generate the items
             this.generateFilters(DataSource.getFilters());
+
+            // Default the filter to the DoD Environment
+            this._cbs["By Cloud Env"].setValue("DoD");
         });
     }
 
