@@ -3,7 +3,10 @@ import Strings from "./strings";
 
 // Filters
 export interface IFilter {
-    text: string, items: Components.ICheckboxGroupItem[], values: object
+    filterIdx: number;
+    text: string;
+    items: Components.ICheckboxGroupItem[];
+    values: object;
 }
 export interface IFilters { [key: string]: IFilter }
 
@@ -19,6 +22,7 @@ export interface IItem {
     product: string;
     productTags: string;
     release: string;
+    releaseDate: string;
     status: string;
 }
 
@@ -34,6 +38,7 @@ const Mapper = {
     product: "Description",
     productTags: "Tags - Products",
     release: "Tags - Release Phase",
+    releaseDate: "Release",
     status: "Status"
 }
 
@@ -47,10 +52,11 @@ export class DataSource {
     static getFilters(): IFilters {
         // Set the filters
         let filters: IFilters = {
-            "Product": { text: "By Product", items: [], values: {} },
-            "Release": { text: "By Release", items: [], values: {} },
-            "Status": { text: "By Status", items: [], values: {} },
-            "Cloud": { text: "By Cloud Env", items: [], values: {} }
+            "Product": { filterIdx: 1, text: "By Product", items: [], values: {} },
+            "Release": { filterIdx: 6, text: "By Release", items: [], values: {} },
+            "ReleaseDate": { filterIdx: 7, text: "By Release Date", items: [], values: {} },
+            "Status": { filterIdx: 0, text: "By Status", items: [], values: {} },
+            "Cloud": { filterIdx: 5, text: "By Cloud Env", items: [], values: {} }
         };
 
         // Parse the items
@@ -77,6 +83,9 @@ export class DataSource {
                 // Add the release
                 filters.Release.values[release] = true;
             }
+
+            // Add the release date
+            filters.ReleaseDate.values[item.releaseDate] = true;
 
             // Add the status
             filters.Status.values[item.status] = true;
@@ -144,7 +153,7 @@ export class DataSource {
         // Parse the header row
         let headers = csv[0].split(',');
         for (let i = 0; i < headers.length; i++) {
-            let header = headers[i];
+            let header = headers[i].replace(/[\r?\n]/g, '');
 
             // Parse the keys
             for (let key in Mapper) {
@@ -158,7 +167,7 @@ export class DataSource {
         // Parse the data
         for (let i = 1; i < csv.length; i++) {
             let row = csv[i];
-            let values = row.substr(1, row.length - 2).split('","');
+            let values = row.substr(1, row.length - 4).split('","');
 
             // Validate the values
             if (values.length != headers.length) { continue; }
@@ -175,6 +184,7 @@ export class DataSource {
                 product: "",
                 productTags: "",
                 release: "",
+                releaseDate: "",
                 status: "",
             };
 
