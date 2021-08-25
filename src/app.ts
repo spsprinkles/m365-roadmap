@@ -24,7 +24,7 @@ export class App {
         return {
             header,
             items,
-            onFilter: (value) => {
+            onFilter: (value: string) => {
                 // Filter the table
                 this._dashboard.filter(filterIdx, value);
             }
@@ -56,7 +56,6 @@ export class App {
             header: {
                 title: Strings.ProjectName
             },
-            rows: items,
             filters: {
                 items: this.getFilters()
             },
@@ -70,132 +69,135 @@ export class App {
                     }
                 ]
             },
-            dtProps: {
-                dom: 'rt<"row"<"col-sm-4"l><"col-sm-4"i><"col-sm-4"p>>'
-            },
-            columns: [
-                {
-                    name: "",
-                    title: "Status",
-                    onRenderCell: (el, col, item: IItem) => {
-                        let badge: Components.IBadgeProps = {
-                            el,
-                            content: item.status,
-                            type: Components.BadgeTypes.Dark
-                        };
-
-                        switch (item.status) {
-                            case "Cancelled":
-                                badge.type = Components.BadgeTypes.Danger;
-                                break;
-                            case "In development":
-                                badge.type = Components.BadgeTypes.Success;
-                                break;
-                            case "Launched":
-                                badge.type = Components.BadgeTypes.Primary;
-                                break;
-                            case "Rolling out":
-                                badge.type = Components.BadgeTypes.Warning;
-                                break;
-                        }
-
-                        // Render the badge
-                        Components.Badge(badge);
-                    }
+            table: {
+                rows: items,
+                dtProps: {
+                    dom: 'rt<"row"<"col-sm-4"l><"col-sm-4"i><"col-sm-4"p>>'
                 },
-                {
-                    name: "product",
-                    title: "Product"
-                },
-                {
-                    name: "productTags",
-                    title: "Associated Products"
-                },
-                {
-                    name: "",
-                    title: "Feature",
-                    onRenderCell: (el, col, item: IItem) => {
-                        // Ensure a link exists
-                        if (item.link) {
-                            // Render a link
-                            Components.Button({
-                                el,
-                                text: item.feature,
-                                type: Components.ButtonTypes.OutlineLink,
-                                onClick: () => {
-                                    // Open in a new window
-                                    window.open(item.link, "_blank");
-                                }
-                            });
-                        } else {
-                            // Render text
-                            el.innerHTML = item.feature;
-                        }
-                    }
-                },
-                {
-                    name: "description",
-                    title: "Description"
-                },
-                {
-                    name: "",
-                    title: "Cloud Instance",
-                    onRenderCell: (el, col, item: IItem) => {
-                        // Parse the cloud instances
-                        let instances = item.cloudInstance.split(',');
-                        for (let i = 0; i < instances.length; i++) {
-                            let instance = instances[i];
-
-                            // Create the badge
+                columns: [
+                    {
+                        name: "",
+                        title: "Status",
+                        onRenderCell: (el, col, item: IItem) => {
                             let badge: Components.IBadgeProps = {
                                 el,
-                                content: instance,
+                                content: item.status,
                                 type: Components.BadgeTypes.Dark
                             };
 
-                            // Set the type
-                            switch (instance) {
-                                case "All environments":
-                                    badge.type = Components.BadgeTypes.Success;
-                                    break;
-                                case "DoD":
+                            switch (item.status) {
+                                case "Cancelled":
                                     badge.type = Components.BadgeTypes.Danger;
                                     break;
-                                case "Education":
-                                    badge.type = Components.BadgeTypes.Warning;
+                                case "In development":
+                                    badge.type = Components.BadgeTypes.Success;
                                     break;
-                                case "GCC":
+                                case "Launched":
                                     badge.type = Components.BadgeTypes.Primary;
                                     break;
-                                case "GCC High":
-                                    badge.type = Components.BadgeTypes.Secondary;
-                                    break;
-                                case "Germany":
-                                    badge.type = Components.BadgeTypes.Info;
-                                    break;
-                                case "Worldwide (Standard Multi-Tenant)":
-                                    badge.type = Components.BadgeTypes.Dark;
+                                case "Rolling out":
+                                    badge.type = Components.BadgeTypes.Warning;
                                     break;
                             }
 
                             // Render the badge
                             Components.Badge(badge);
                         }
+                    },
+                    {
+                        name: "product",
+                        title: "Product"
+                    },
+                    {
+                        name: "productTags",
+                        title: "Associated Products"
+                    },
+                    {
+                        name: "",
+                        title: "Feature",
+                        onRenderCell: (el, col, item: IItem) => {
+                            // Ensure a link exists
+                            if (item.link) {
+                                // Render a link
+                                Components.Button({
+                                    el,
+                                    text: item.feature,
+                                    type: Components.ButtonTypes.OutlineLink,
+                                    onClick: () => {
+                                        // Open in a new window
+                                        window.open(item.link, "_blank");
+                                    }
+                                });
+                            } else {
+                                // Render text
+                                el.innerHTML = item.feature;
+                            }
+                        }
+                    },
+                    {
+                        name: "description",
+                        title: "Description"
+                    },
+                    {
+                        name: "",
+                        title: "Cloud Instance",
+                        onRenderCell: (el, col, item: IItem) => {
+                            // Parse the cloud instances
+                            let instances = item.cloudInstance.split(',');
+                            for (let i = 0; i < instances.length; i++) {
+                                let instance = instances[i];
+
+                                // Create the badge
+                                let badge: Components.IBadgeProps = {
+                                    el,
+                                    content: instance,
+                                    type: Components.BadgeTypes.Dark
+                                };
+
+                                // Set the type
+                                switch (instance) {
+                                    case "All environments":
+                                        badge.type = Components.BadgeTypes.Success;
+                                        break;
+                                    case "DoD":
+                                        badge.type = Components.BadgeTypes.Danger;
+                                        break;
+                                    case "Education":
+                                        badge.type = Components.BadgeTypes.Warning;
+                                        break;
+                                    case "GCC":
+                                        badge.type = Components.BadgeTypes.Primary;
+                                        break;
+                                    case "GCC High":
+                                        badge.type = Components.BadgeTypes.Secondary;
+                                        break;
+                                    case "Germany":
+                                        badge.type = Components.BadgeTypes.Info;
+                                        break;
+                                    case "Worldwide (Standard Multi-Tenant)":
+                                        badge.type = Components.BadgeTypes.Dark;
+                                        break;
+                                }
+
+                                // Render the badge
+                                Components.Badge(badge);
+                            }
+                        }
+                    },
+                    {
+                        name: "release",
+                        title: "Release",
+                    },
+                    {
+                        name: "releaseDate",
+                        title: "Release Date",
+                    },
+                    {
+                        name: "addedToRoadmap",
+                        title: "Date Added",
                     }
-                },
-                {
-                    name: "release",
-                    title: "Release",
-                },
-                {
-                    name: "releaseDate",
-                    title: "Release Date",
-                },
-                {
-                    name: "addedToRoadmap",
-                    title: "Date Added",
-                }
-            ]
+                ]
+            }
         });
 
         // Set the default filter
