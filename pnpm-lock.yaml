@@ -8,7 +8,7 @@ specifiers:
   datatables.net: ^1.10.25
   datatables.net-bs5: ^1.10.25
   dattatable: ^0.7.7
-  gd-sprest-bs: ^7.7.7
+  gd-sprest-bs: ^7.8.7
   html-loader: ^2.1.2
   jquery: ^3.6.0
   moment: ^2.29.1
@@ -25,8 +25,8 @@ specifiers:
 dependencies:
   datatables.net: 1.10.25
   datatables.net-bs5: 1.10.25
-  dattatable: 0.7.7_2a8eff70b73cd182cb64890174cf1bbd
-  gd-sprest-bs: 7.7.7
+  dattatable: 0.7.7_c08dd3e986cd0cfe4740814ffb017620
+  gd-sprest-bs: 7.8.7
   jquery: 3.6.0
   moment: 2.29.1
 
@@ -1791,7 +1791,7 @@ packages:
       jquery: 3.6.0
     dev: false
 
-  /dattatable/0.7.7_2a8eff70b73cd182cb64890174cf1bbd:
+  /dattatable/0.7.7_c08dd3e986cd0cfe4740814ffb017620:
     resolution: {integrity: sha512-tcpEg/bydyTZblrHzqUxO1Sxa63RegP1opEQy+M+ZORRtH/GN4ZOh4jVqnAZuS+YADAXVPp54ad7dPdxyrIBJQ==}
     peerDependencies:
       datatables.net: '*'
@@ -1802,7 +1802,7 @@ packages:
     dependencies:
       datatables.net: 1.10.25
       datatables.net-bs5: 1.10.25
-      gd-sprest-bs: 7.7.7
+      gd-sprest-bs: 7.8.7
       jquery: 3.6.0
       moment: 2.29.1
     dev: false
@@ -2068,8 +2068,8 @@ packages:
       globule: 1.3.2
     dev: true
 
-  /gd-bs/4.6.4:
-    resolution: {integrity: sha512-6Hs29CwJh46ih1PMF9l9v0GKh1gfk2d2wJ+76mDTDfpiyqqUOq2t6y3Ld7QzIqH4i8f3VXChM+XcYNt1VJfKZw==}
+  /gd-bs/4.7.0:
+    resolution: {integrity: sha512-3kmSXOGDyp1EQmNpOig3GIagVF6iGb4jbkNcc3shjfj5v0PBPjUVuM3lUYNMSkhtJHJ7II8EIIEa6OLjnXwpeg==}
     dependencies:
       bootstrap: 5.0.2
       bootstrap-icons: 1.5.0
@@ -2079,25 +2079,25 @@ packages:
       - '@popperjs/core'
     dev: false
 
-  /gd-sprest-bs/7.7.7:
-    resolution: {integrity: sha512-U6kkCKMjY52cR+sSUpNGKTuxgVBzqym5LAKuqBJZglIW+JM/FsKpz1Ezp07PfCbd0h8fh+rMtuvTGwgepkn9CQ==}
+  /gd-sprest-bs/7.8.7:
+    resolution: {integrity: sha512-SO0SL7RH5g35PWqhqDQ+UpSqG9Nlk2hY1ckrvBaWeVxs6Ipv620n8iVxxRy/Xskh3nqobVxDjc5DyJ9nEANo0A==}
     dependencies:
       flatpickr: 4.6.9
-      gd-bs: 4.6.4
-      gd-sprest: 6.5.0
-      gd-sprest-def: 1.0.2
+      gd-bs: 4.7.0
+      gd-sprest: 6.5.3
+      gd-sprest-def: 1.0.4
     transitivePeerDependencies:
       - '@popperjs/core'
     dev: false
 
-  /gd-sprest-def/1.0.2:
-    resolution: {integrity: sha512-0N4+aJeg/cojC5PAOlFrMWW13XKcPinQyk+OB3TuqULkP4xwc6neKGkfhNwgvoqzkUK8hTzzt6OSZEjDMGu01A==}
+  /gd-sprest-def/1.0.4:
+    resolution: {integrity: sha512-0rSox4SEB610Q42iRXhn0XLuqAzLC2f63QSfcPx9pRDRHlIpLBm2XnHm1mzmrcrE5x0Ag1oeond2c+b2ybuqHg==}
     dev: false
 
-  /gd-sprest/6.5.0:
-    resolution: {integrity: sha512-SGHI0lGj+gs98AI3XtTH2RaUm9/YnRNZ5v4jK3EZLp1hTOSSS/wPbaCcaDjlh4tqia0KK342RQxSJqZ9GAjLeg==}
+  /gd-sprest/6.5.3:
+    resolution: {integrity: sha512-icpx6Lrr7D/Tp2Gh+FU6e1Xony0vycHsE+b6E0uh+eOZoklPFdHBldujmg8O9TO6l5J/DmlZAG0B2lEVWYCopQ==}
     dependencies:
-      gd-sprest-def: 1.0.2
+      gd-sprest-def: 1.0.4
     dev: false
 
   /gensync/1.0.0-beta.2:
