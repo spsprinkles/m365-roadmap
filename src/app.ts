@@ -57,7 +57,9 @@ export class App {
                 title: Strings.ProjectName
             },
             rows: items,
-            filters: this.getFilters(),
+            filters: {
+                items: this.getFilters()
+            },
             navigation: {
                 title: Strings.ProjectName
             },
