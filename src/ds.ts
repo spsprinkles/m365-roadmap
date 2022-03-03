@@ -191,7 +191,7 @@ export class DataSource {
             // Parse the mapper
             for (let key in Mapper) {
                 // Update the item
-                item[key] = values[colIdx[key]].trim();
+                item[key] = (values[colIdx[key]] || "").trim();
             }
 
             // Update the feature
