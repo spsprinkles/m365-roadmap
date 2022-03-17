@@ -123,6 +123,7 @@ export class App {
                                     el,
                                     text: item.feature,
                                     type: Components.ButtonTypes.OutlineLink,
+                                    isSmall: true,
                                     onClick: () => {
                                         // Open in a new window
                                         window.open(item.link, "_blank");
