@@ -126,14 +126,14 @@ export class DataSource {
         return filters;
     }
 
-    static load(): PromiseLike<Array<IItem>> {
+    static load(csvUrl?: string): PromiseLike<Array<IItem>> {
         // Return a promise
         return new Promise((resolve) => {
             // Read the file from the static location
             let xhr = new XMLHttpRequest();
 
             // Create the async request
-            xhr.open("GET", [ContextInfo.webServerRelativeUrl, Strings.SolutionUrl].join('/'), true);
+            xhr.open("GET", csvUrl || Strings.CSVUrl, true);
 
             // Add the load event
             xhr.onreadystatechange = () => {
@@ -171,7 +171,7 @@ export class DataSource {
         // Parse the data
         for (let i = 1; i < csv.length; i++) {
             let row = csv[i];
-            let values = row.substr(1, row.length - 4).split('","');
+            let values = row.substring(1, row.length - 4).split('","');
 
             // Validate the values
             if (values.length != headers.length) { continue; }
@@ -202,7 +202,7 @@ export class DataSource {
 
             // Update the feature
             let idx = item.feature.indexOf(":");
-            item.feature = item.feature.substr(idx + 1).trim();
+            item.feature = item.feature.substring(idx + 1).trim();
 
             // Update the product
             item.product = item.product.split(':')[0].trim();

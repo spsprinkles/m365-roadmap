@@ -10,9 +10,9 @@ export class App {
     private _dashboard: Dashboard = null;
 
     // Constructor
-    constructor(el: HTMLElement) {
+    constructor(el: HTMLElement, csvUrl?: string) {
         // Load the data
-        DataSource.load().then(items => {
+        DataSource.load(csvUrl).then(items => {
             // Render the dashboard
             this.render(el, items);
         });

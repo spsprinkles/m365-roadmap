@@ -1,7 +1,5 @@
 define([], function() {
   return {
-    "PropertyPaneDescription": "Description",
-    "BasicGroupName": "Group Name",
-    "DescriptionFieldLabel": "Description Field"
+    "CSVUrlFieldLabel": "The url to the CSV file containing the data for this webpart."
   }
 });

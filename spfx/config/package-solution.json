@@ -3,7 +3,7 @@
   "solution": {
     "name": "M365 Roadmap",
     "id": "9fefe12b-8269-4395-b10c-3691e0c04acb",
-    "version": "0.1.0.3",
+    "version": "0.1.0.4",
     "includeClientSideAssets": true,
     "isDomainIsolated": false,
     "developer": {

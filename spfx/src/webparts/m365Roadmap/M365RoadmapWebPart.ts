@@ -13,14 +13,14 @@ import "../../../../dist/m365-roadmap.min.js";
 declare var M365Roadmap;
 
 export interface IM365RoadmapWebPartProps {
-  description: string;
+  csvUrl: string;
 }
 
 export default class M365RoadmapWebPart extends BaseClientSideWebPart<IM365RoadmapWebPartProps> {
 
   public render(): void {
     // Render the element
-    M365Roadmap.render(this.domElement, this.context.pageContext);
+    M365Roadmap.render(this.domElement, this.context.pageContext, this.properties.csvUrl);
   }
 
   protected get dataVersion(): Version {
@@ -31,15 +31,11 @@ export default class M365RoadmapWebPart extends BaseClientSideWebPart<IM365Roadm
     return {
       pages: [
         {
-          header: {
-            description: strings.PropertyPaneDescription
-          },
           groups: [
             {
-              groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneTextField('csvUrl', {
+                  label: strings.CSVUrlFieldLabel
                 })
               ]
             }

@@ -14,7 +14,7 @@ if (elApp) {
 
 // Create the global variable for this solution
 window[Strings.GlobalVariable] = {
-    render: (el, context?) => {
+    render: (el, context?, csvUrl?:string) => {
         // See if the page context exists
         if (context) {
             // Set the context
@@ -22,6 +22,6 @@ window[Strings.GlobalVariable] = {
         }
 
         // Create the application
-        new App(el);
+        new App(el, csvUrl);
     }
 }

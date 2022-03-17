@@ -1,7 +1,5 @@
 declare interface IM365RoadmapWebPartStrings {
-  PropertyPaneDescription: string;
-  BasicGroupName: string;
-  DescriptionFieldLabel: string;
+  CSVUrlFieldLabel: string;
 }
 
 declare module 'M365RoadmapWebPartStrings' {
