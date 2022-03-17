@@ -1,3 +1,5 @@
+[![Build & Package](https://github.com/spsprinkles/m365-roadmap/actions/workflows/webpack.yml/badge.svg)](https://github.com/spsprinkles/m365-roadmap/actions/workflows/webpack.yml)
+
 ![Demo](./demo.png)
 
 # Datta Table
