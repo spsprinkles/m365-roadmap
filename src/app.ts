@@ -13,8 +13,19 @@ export class App {
     constructor(el: HTMLElement, csvUrl?: string) {
         // Load the data
         DataSource.load(csvUrl).then(items => {
-            // Render the dashboard
-            this.render(el, items);
+            // Ensure items exist
+            if (items) {
+                // Render the dashboard
+                this.render(el, items);
+            } else {
+                // Render an error
+                Components.Alert({
+                    el,
+                    header: "Error Loading Data",
+                    content: "Unable to load the data. Make sure the csv file exists and/or the path is set correctly.",
+                    type: Components.AlertTypes.Danger
+                });
+            }
         });
     }
 

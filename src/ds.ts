@@ -140,7 +140,7 @@ export class DataSource {
                 // Ensure it's complete
                 if (xhr.readyState == XMLHttpRequest.DONE) {
                     // Resolve the request
-                    resolve(this.parse(xhr.response.split('\n')));
+                    resolve(xhr.response ? this.parse(xhr.response.split('\n')) : null);
                 }
             }
 
