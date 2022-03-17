@@ -19,6 +19,8 @@ export interface IItem {
     featureId: string;
     lastModified: string;
     link: string;
+    platform: string;
+    preview: string;
     product: string;
     productTags: string;
     release: string;
@@ -35,8 +37,10 @@ const Mapper = {
     featureId: "Feature ID",
     lastModified: "Last Modified",
     link: "More Info",
+    platform: "Tags - Platform",
+    preview: "Preview",
     product: "Description",
-    productTags: "Tags - Products",
+    productTags: "Tags - Product",
     release: "Tags - Release Phase",
     releaseDate: "Release",
     status: "Status"
@@ -153,11 +157,11 @@ export class DataSource {
         // Parse the header row
         let headers = csv[0].split(',');
         for (let i = 0; i < headers.length; i++) {
-            let header = headers[i].replace(/[\r?\n]/g, '');
+            let header = headers[i].replace(/[\r?\n]/g, '').toLowerCase();
 
             // Parse the keys
             for (let key in Mapper) {
-                if (Mapper[key] == header) {
+                if (Mapper[key].toLowerCase() == header) {
                     // Set the index
                     colIdx[key] = i;
                 }
@@ -181,11 +185,13 @@ export class DataSource {
                 featureId: "",
                 lastModified: "",
                 link: "",
+                platform: "",
+                preview: "",
                 product: "",
                 productTags: "",
                 release: "",
                 releaseDate: "",
-                status: "",
+                status: ""
             };
 
             // Parse the mapper
