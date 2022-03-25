@@ -24,7 +24,7 @@ module.exports = (env, argv) => {
         plugins: [
             new MomentLocalesPlugin(),
         ],
-        
+
         // Resolve the file names
         resolve: {
             extensions: [".js", ".css", ".scss", ".ts"]
@@ -44,7 +44,12 @@ module.exports = (env, argv) => {
                         // Translate css to CommonJS
                         { loader: "css-loader" },
                         // Compile sass to css
-                        { loader: "sass-loader" }
+                        {
+                            loader: "sass-loader",
+                            options: {
+                                implementation: require("sass")
+                            }
+                        }
                     ]
                 },
                 // Handle Image Files
