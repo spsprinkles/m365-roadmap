@@ -61,6 +61,9 @@ export class App {
 
     // Renders the dashboard
     private render(el: HTMLElement, items: any[]) {
+        // Clear the element
+        while (el.firstChild) { el.removeChild(el.firstChild); }
+
         // Create the dashboard
         this._dashboard = new Dashboard({
             el,

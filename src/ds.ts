@@ -132,8 +132,12 @@ export class DataSource {
             // Read the file from the static location
             let xhr = new XMLHttpRequest();
 
+            // Set the url
+            let url = (csvUrl || Strings.CSVUrl).replace("~site/", ContextInfo.webServerRelativeUrl + "/")
+                .replace("~sitecollection/", ContextInfo.siteServerRelativeUrl + "/");
+
             // Create the async request
-            xhr.open("GET", csvUrl || Strings.CSVUrl, true);
+            xhr.open("GET", url, true);
 
             // Add the load event
             xhr.onreadystatechange = () => {
@@ -216,16 +220,5 @@ export class DataSource {
 
         // Return the data
         return this._data;
-    }
-
-    // Waits for the data to be loaded
-    static waitUntilLoaded(): PromiseLike<void> {
-        // Return a promise
-        return new Promise(resolve => {
-            let id = setInterval(() => {
-                // See if the data exists
-                if (this._data) { clearInterval(id); resolve(); }
-            }, 10);
-        });
     }
 }
